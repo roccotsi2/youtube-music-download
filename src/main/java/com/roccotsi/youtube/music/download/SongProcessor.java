@@ -30,11 +30,12 @@ public class SongProcessor {
 		// try to find song on Youtube
 		String searchTextPlain = ExtractVideoUtil.generateSongTitle(song);
 		List<VideoItem> listVideoItemPlain = extractVideo.search(searchTextPlain);
-		analyzeVideo.calculateTitleSimilarities(listVideoItemPlain, searchTextPlain);
-
-		listVideoItemPlain = analyzeVideo.filterVideosBySimilarity(listVideoItemPlain);
 
 		extractVideo.setViewCounts(listVideoItemPlain);
+
+		analyzeVideo.calculateTitleSimilarities(listVideoItemPlain, searchTextPlain);
+
+		// ExtractVideoUtil.writeVideoItemsAsJsonToFile(listVideoItemPlain);
 
 		// Select the video that fits best
 		VideoItem videoItemPlain = calculateBestFitVideoAndSetYoutubeLink(song, listVideoItemPlain, searchTextPlain);

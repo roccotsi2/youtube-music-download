@@ -12,7 +12,8 @@ public class VideoItem {
 	private String id;
 	private String videoTitle;
 	private long viewCount;
-	private int similarityPercent;
+	private transient int similarityPercent; // will be calculated on the fly
+	private transient int similarityPercentSearchText; // will be calculated on the fly
 
 	public VideoItem(String id, String videoTitle, long viewCount) {
 		this.id = id;
